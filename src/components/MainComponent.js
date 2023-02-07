@@ -32,12 +32,12 @@ class Main extends Component {
                 <Home
                     dish={this.state.dishes.filter((item) => item.featured)[0]}
                     promotion={this.state.promotions.filter((item) => item.featured)[0]}
-                    leader={this.state.leaders.filter((item) => item.featured)[0]} 
+                    leader={this.state.leaders.filter((item) => item.featured)[0]}
                 />
             );
         }
 
-        const DishWithId = ({match}) => {
+        const DishWithId = ({ match }) => {
             const dishId = parseInt(match.params.dishId, 10);
 
             return (

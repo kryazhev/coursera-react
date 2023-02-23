@@ -33,8 +33,7 @@ class DishDetail extends Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        console.log("Submited values are: " + JSON.stringify(values));
-        alert("Submited values are: " + JSON.stringify(values));
+        this.props.addComment(this.props.dish.id, values.rating, values.author, values.comment);
     }
 
     render() {
@@ -89,7 +88,7 @@ class DishDetail extends Component {
                     <ModalBody>
                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
-                                <Label htmlFor="rating"md={12}>Rating</Label>
+                                <Label htmlFor="rating" md={12}>Rating</Label>
                                 <Col md={12}>
                                     <Control.select model=".rating" name="rating" className="form-control">
                                         <option>1</option>
@@ -101,7 +100,7 @@ class DishDetail extends Component {
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="author"md={12}>Your Name</Label>
+                                <Label htmlFor="author" md={12}>Your Name</Label>
                                 <Col md={12}>
                                     <Control.text model=".author" id="author" name="author"
                                         className="form-control"

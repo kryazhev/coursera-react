@@ -7,6 +7,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 
 import { Link } from "react-router-dom";
 import { Loading } from "./LoadingComponent";
+import { baseUrl } from "../shared/baseUrl";
 
 
 const required = (value) => value && value.length;
@@ -82,7 +83,7 @@ class DishDetail extends Component {
                         <div className="row">
                             <div className="col-12 col-md-5 m-1">
                                 <Card>
-                                    <CardImg top src={this.props.dish.image} alt={this.props.dish.name} />
+                                    <CardImg top src={baseUrl + this.props.dish.image} alt={this.props.dish.name} />
                                     <CardBody>
                                         <CardTitle>{this.props.dish.name}</CardTitle>
                                         <CardText>{this.props.dish.description}</CardText>

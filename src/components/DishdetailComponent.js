@@ -4,6 +4,7 @@ import {
     Modal, ModalHeader, ModalBody, Label, Button, Col, Row
 } from "reactstrap";
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 import { Link } from "react-router-dom";
 import { Loading } from "./LoadingComponent";
@@ -59,13 +60,15 @@ class DishDetail extends Component {
         } else if (this.props.dish != null) {
             const renderedComments = this.props.comments.map((comment) => {
                 return (
-                    <li>
-                        <p>{comment.comment}</p>
-                        <p>-- {comment.author}, {comment.date}</p>
-                    </li>
+                    <Fade>
+                        <li>
+                            <p>{comment.comment}</p>
+                            <p>-- {comment.author}, {comment.date}</p>
+                        </li>
+                    </Fade>
                 );
             });
-    
+
             return (
                 <React.Fragment>
                     <div className="container">
@@ -82,19 +85,25 @@ class DishDetail extends Component {
                         </div>
                         <div className="row">
                             <div className="col-12 col-md-5 m-1">
-                                <Card>
-                                    <CardImg top src={baseUrl + this.props.dish.image} alt={this.props.dish.name} />
-                                    <CardBody>
-                                        <CardTitle>{this.props.dish.name}</CardTitle>
-                                        <CardText>{this.props.dish.description}</CardText>
-                                    </CardBody>
-                                </Card>
+                                <FadeTransform in transformProps={{
+                                    exitTransform: 'scale(0.5) translateY(-50%)'
+                                }}>
+                                    <Card>
+                                        <CardImg top src={baseUrl + this.props.dish.image} alt={this.props.dish.name} />
+                                        <CardBody>
+                                            <CardTitle>{this.props.dish.name}</CardTitle>
+                                            <CardText>{this.props.dish.description}</CardText>
+                                        </CardBody>
+                                    </Card>
+                                </FadeTransform>
                             </div>
                             <div className="col-12 col-md-5 m-1">
                                 <div>
                                     <h4>Comments</h4>
                                     <ul className="list-unstyled">
-                                        {renderedComments}
+                                        <Stagger in>
+                                            {renderedComments}
+                                        </Stagger>
                                     </ul>
                                     <Button outline onClick={this.toggleModal}>
                                         <span className="fa fa-pencil fa-lg"></span> Submit Comment

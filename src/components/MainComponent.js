@@ -8,7 +8,7 @@ import Contact from './ContactComponent';
 import About from './AboutComponent';
 import DishDetail from './DishdetailComponent';
 import { connect } from 'react-redux';
-import { addComment } from '../redux/ActionCreators';
+import { addComment, fetchDishes } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -20,7 +20,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment))
+    addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
+    fetchDishes: () => {dispatch(fetchDishes())}
 })
 
 class Main extends Component {
@@ -29,11 +30,17 @@ class Main extends Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.fetchDishes();
+    }
+
     render() {
         const HomePage = () => {
             return (
                 <Home
-                    dish={this.props.dishes.filter((item) => item.featured)[0]}
+                    dish={this.props.dishes.dishes.filter((item) => item.featured)[0]}
+                    dishesLoading={this.props.dishes.isLoading}
+                    dishesErrorMessage={this.props.dishes.errorMessage}
                     promotion={this.props.promotions.filter((item) => item.featured)[0]}
                     leader={this.props.leaders.filter((item) => item.featured)[0]}
                 />
@@ -45,7 +52,9 @@ class Main extends Component {
 
             return (
                 <DishDetail
-                    dish={this.props.dishes.filter((item) => item.id === dishId)[0]}
+                    dish={this.props.dishes.dishes.filter((item) => item.id === dishId)[0]}
+                    isLoading={this.props.dishes.isLoading}
+                    errorMessage={this.props.dishes.errorMessage}
                     comments={this.props.comments.filter((item) => item.dishId === dishId)}
                     addComment={this.props.addComment}
                 />

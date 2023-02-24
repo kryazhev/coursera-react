@@ -36,7 +36,7 @@ class DishDetail extends Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        this.props.addComment(this.props.dish.id, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dish.id, values.rating, values.author, values.comment);
     }
 
     render() {

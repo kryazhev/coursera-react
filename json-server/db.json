@@ -201,6 +201,45 @@
       "comment": "It's your birthday, we're gonna party!",
       "author": "25 Cent",
       "date": "2011-12-02T17:57:28.556094Z"
+    },
+    {
+      "dishId": 0,
+      "rating": "3",
+      "author": "Василий Кряжев",
+      "comment": "Это крутая пицца",
+      "date": "2023-02-24T22:34:56.222Z",
+      "id": 20
+    },
+    {
+      "dishId": 0,
+      "rating": "3",
+      "author": "asdasd",
+      "comment": "фывфыв",
+      "date": "2023-02-24T22:36:10.394Z",
+      "id": 21
+    },
+    {
+      "dishId": 0,
+      "rating": "4",
+      "author": "Василий Кряжев",
+      "comment": "Другой комментарий",
+      "date": "2023-02-24T22:37:04.250Z",
+      "id": 22
+    },
+    {
+      "dishId": 0,
+      "author": "asdasd",
+      "comment": "asd",
+      "date": "2023-02-24T22:41:25.487Z",
+      "id": 23
+    },
+    {
+      "dishId": 0,
+      "rating": "5",
+      "author": "Василий Кряжев",
+      "comment": "Что за дела?",
+      "date": "2023-02-24T22:41:43.385Z",
+      "id": 24
     }
   ],
   "promotions": [

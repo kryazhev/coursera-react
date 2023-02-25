@@ -32,8 +32,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
                 throw error;
             }
         }, error => {
-            var error = new Error(error.message);
-            throw error;
+            throw new Error(error.message);
         })
         .then(response => response.json())
         .then(response => dispatch(addComment(response)))
@@ -57,8 +56,7 @@ export const fetchDishes = () => (dispatch) => {
                 throw error;
             }
         }, error => {
-            var error = new Error(error.message);
-            throw error;
+            throw new Error(error.message);
         })
         .then(response => response.json())
         .then(dishes => dispatch(addDishes(dishes)))
@@ -90,8 +88,7 @@ export const fetchComments = () => (dispatch) => {
                 throw error;
             }
         }, error => {
-            var error = new Error(error.message);
-            throw error;
+            throw new Error(error.message);
         })
         .then(response => response.json())
         .then(comments => dispatch(addComments(comments)))
@@ -121,8 +118,7 @@ export const fetchPromotions = () => (dispatch) => {
                 throw error;
             }
         }, error => {
-            var error = new Error(error.message);
-            throw error;
+            throw new Error(error.message);
         })
         .then(response => response.json())
         .then(promotions => dispatch(addPromotions(promotions)))
